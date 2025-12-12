@@ -1,0 +1,127 @@
+# Entry point
+Step welcome
+    Speak "您好，请问您需要点什么"
+    Listen 100
+    Branch "食物", foodBranch
+    Branch "饮品", drinkBranch
+    Branch "套餐", comboBranch
+    Branch "查看订单", performCheck
+    Branch "退出", exitBranch
+    Silence welcome
+    Default welcome
+
+# Food Branch
+Step foodBranch
+    Speak "菜单如下：食物1；食物2；食物3"
+    Listen 20
+    Branch "食物1", placeFoodOrder
+    Branch "食物2", placeFoodOrder
+    Branch "食物3", placeFoodOrder
+    Branch "返回", welcome
+    Silence foodBranch
+    Default defaultBranchFood
+
+Step placeFoodOrder
+    Action place_order "F"
+    Speak "您已下单，您的号码为：$last_order_id"
+    Listen 20
+    Branch "返回", welcome
+    Default defaultBranch
+
+# Drink Branch
+Step drinkBranch
+    Speak "菜单如下：饮品1；饮品2；饮品3"
+    Listen 20
+    Branch "饮品1", placeDrinkOrder
+    Branch "饮品2", placeDrinkOrder
+    Branch "饮品3", placeDrinkOrder
+    Branch "返回", welcome
+    Silence drinkBranch
+    Default defaultBranchDrink
+
+Step placeDrinkOrder
+    Action place_order "D"
+    Speak "您已下单，您的号码为：$last_order_id"
+    Listen 20
+    Branch "返回", welcome
+    Default defaultBranch
+
+# Combo Branch
+Step comboBranch
+    Speak "套餐如下：套餐1；套餐2；套餐3"
+    Listen 20
+    Branch "套餐1", placeComboOrder
+    Branch "套餐2", placeComboOrder
+    Branch "套餐3", placeComboOrder
+    Branch "返回", welcome
+    Silence comboBranch
+    Default defaultBranchCombo
+
+Step placeComboOrder
+    Action place_order "C"
+    Speak "您已下单，您的号码为：$last_order_id"
+    Listen 20
+    Branch "返回", welcome
+    Silence welcome
+    Default welcome
+
+# Check Order Branch
+Step checkOrderBranch
+    Speak "请输入订单号码"
+    Listen 20
+    Branch "返回", welcome
+    Silence welcome
+    Default defaultBranch
+
+Step performCheck
+    Speak "请输入订单号码"
+    Listen 20
+    Action check_order_from_input "user_input"
+    Speak "$check_result"
+    Listen 20
+    Branch "返回", welcome
+    Default defaultBranch
+
+Step defaultBranch
+    Speak "没有理解您的意思，请重说"
+    Listen 20
+    Branch "食物", foodBranch
+    Branch "饮品", drinkBranch
+    Branch "套餐", comboBranch
+    Branch "查看订单", performCheck
+    Branch "退出", exitBranch
+    Default defaultBranch
+
+Step defaultBranchFood
+    Speak "没有听清您说的是哪个食物，请重说"
+    Listen 20,
+    Branch "食物1", placeFoodOrder
+    Branch "食物2", placeFoodOrder
+    Branch "食物3", placeFoodOrder
+    Branch "有什么",foodBranch
+    Branch "返回", welcome
+    Silence foodBranch
+    Default defaultBranchFood
+Step defaultBranchDrink
+    Speak "没有听清您说的是哪个饮品，请重说"
+    Listen
+    Branch "饮品1", placeDrinkOrder
+    Branch "饮品2", placeDrinkOrder
+    Branch "饮品3", placeDrinkOrder
+    Branch "有什么",drinkBranch
+    Branch "返回", welcome
+    Silence drinkBranch
+    Default defaultBranchDrink
+Step defaultBranchCombo
+    Speak "没有听清您说的是哪个套餐，请重说"
+    Listen 20
+    Branch "套餐1", placeComboOrder
+    Branch "套餐2", placeComboOrder
+    Branch "套餐3", placeComboOrder
+    Branch "有什么",comboBranch
+    Branch "返回", welcome
+    Silence comboBranch
+    Default defaultBranchCombo
+Step exitBranch
+    Speak "再见"
+    Exit

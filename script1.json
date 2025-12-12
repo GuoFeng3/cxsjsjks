@@ -1,0 +1,313 @@
+{
+    "login": {
+        "name": "login",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "您好，请问您是？"
+            },
+            {
+                "type": "Listen",
+                "params": []
+            },
+            {
+                "type": "Action",
+                "name": "user_login",
+                "args": [
+                    "user_input"
+                ]
+            }
+        ],
+        "branches": {},
+        "silence_step": null,
+        "default_step": "welcome",
+        "is_exit": false
+    },
+    "welcome": {
+        "name": "welcome",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "您好，$username，请问有什么可以为您服务的？"
+            },
+            {
+                "type": "Listen",
+                "params": []
+            }
+        ],
+        "branches": {
+            "充话费": "billBranch",
+            "充流量": "flowBranch",
+            "变更套餐": "comboBranch",
+            "查看当前套餐": "performCheck",
+            "退出": "exitBranch"
+        },
+        "silence_step": "welcome",
+        "default_step": "welcome",
+        "is_exit": false
+    },
+    "billBranch": {
+        "name": "billBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "请问您充值的金额为："
+            },
+            {
+                "type": "Listen",
+                "params": []
+            }
+        ],
+        "branches": {
+            "<=0": "failBranch",
+            ">0": "billSuccessBranch"
+        },
+        "silence_step": "billUnkownBranch",
+        "default_step": "billUnkownBranch",
+        "is_exit": false
+    },
+    "billSuccessBranch": {
+        "name": "billSuccessBranch",
+        "instructions": [
+            {
+                "type": "Action",
+                "name": "charge_bill",
+                "args": [
+                    "user_input"
+                ]
+            },
+            {
+                "type": "Speak",
+                "content": "话费充值成功，请问还有什么可以为您服务的"
+            },
+            {
+                "type": "Listen",
+                "params": []
+            }
+        ],
+        "branches": {
+            "充话费": "billBranch",
+            "充流量": "flowBranch",
+            "变更套餐": "comboBranch",
+            "查看当前套餐": "performCheck",
+            "退出": "exitBranch"
+        },
+        "silence_step": "welcome",
+        "default_step": "welcome",
+        "is_exit": false
+    },
+    "billUnkownBranch": {
+        "name": "billUnkownBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "没有听清，请您重说一遍好吗"
+            }
+        ],
+        "branches": {},
+        "silence_step": null,
+        "default_step": "billBranch",
+        "is_exit": false
+    },
+    "failBranch": {
+        "name": "failBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "您输入的数值有误，请重新输入"
+            }
+        ],
+        "branches": {},
+        "silence_step": null,
+        "default_step": "billBranch",
+        "is_exit": false
+    },
+    "flowBranch": {
+        "name": "flowBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "请问您充值的流量为(GB)："
+            },
+            {
+                "type": "Listen",
+                "params": []
+            }
+        ],
+        "branches": {
+            "<=0": "failFlowBranch",
+            ">0": "flowSuccessBranch"
+        },
+        "silence_step": "flowUnknownBranch",
+        "default_step": "flowUnknownBranch",
+        "is_exit": false
+    },
+    "flowSuccessBranch": {
+        "name": "flowSuccessBranch",
+        "instructions": [
+            {
+                "type": "Action",
+                "name": "charge_data",
+                "args": [
+                    "user_input"
+                ]
+            },
+            {
+                "type": "Speak",
+                "content": "流量充值成功，请问还有什么可以为您服务的"
+            },
+            {
+                "type": "Listen",
+                "params": []
+            }
+        ],
+        "branches": {
+            "充话费": "billBranch",
+            "充流量": "flowBranch",
+            "变更套餐": "comboBranch",
+            "查看当前套餐": "performCheck",
+            "退出": "exitBranch"
+        },
+        "silence_step": "welcome",
+        "default_step": "welcome",
+        "is_exit": false
+    },
+    "flowUnknownBranch": {
+        "name": "flowUnknownBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "没有听清，请您重说一遍好吗"
+            }
+        ],
+        "branches": {},
+        "silence_step": null,
+        "default_step": "flowBranch",
+        "is_exit": false
+    },
+    "failFlowBranch": {
+        "name": "failFlowBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "您输入的数值有误，请重新输入"
+            }
+        ],
+        "branches": {},
+        "silence_step": null,
+        "default_step": "flowBranch",
+        "is_exit": false
+    },
+    "comboBranch": {
+        "name": "comboBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "请选择变更的套餐：套餐1、套餐2、套餐3"
+            },
+            {
+                "type": "Listen",
+                "params": []
+            }
+        ],
+        "branches": {
+            "套餐1": "comboSuccess",
+            "套餐2": "comboSuccess",
+            "套餐3": "comboSuccess"
+        },
+        "silence_step": "comboUnknownBranch",
+        "default_step": "comboUnknownBranch",
+        "is_exit": false
+    },
+    "comboSuccess": {
+        "name": "comboSuccess",
+        "instructions": [
+            {
+                "type": "Action",
+                "name": "change_combo",
+                "args": [
+                    "user_input"
+                ]
+            },
+            {
+                "type": "Speak",
+                "content": "套餐变更成功，请问还有什么可以为您服务的"
+            },
+            {
+                "type": "Listen",
+                "params": []
+            }
+        ],
+        "branches": {
+            "充话费": "billBranch",
+            "充流量": "flowBranch",
+            "变更套餐": "comboBranch",
+            "查看当前套餐": "performCheck",
+            "退出": "exitBranch"
+        },
+        "silence_step": "welcome",
+        "default_step": "welcome",
+        "is_exit": false
+    },
+    "comboUnknownBranch": {
+        "name": "comboUnknownBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "没有听清，请您重说一遍好吗"
+            }
+        ],
+        "branches": {},
+        "silence_step": null,
+        "default_step": "comboBranch",
+        "is_exit": false
+    },
+    "performCheck": {
+        "name": "performCheck",
+        "instructions": [
+            {
+                "type": "Action",
+                "name": "check_status",
+                "args": []
+            },
+            {
+                "type": "Speak",
+                "content": "$check_result"
+            },
+            {
+                "type": "Speak",
+                "content": "请问还有什么可以为您服务的"
+            },
+            {
+                "type": "Listen",
+                "params": []
+            }
+        ],
+        "branches": {
+            "充话费": "billBranch",
+            "充流量": "flowBranch",
+            "变更套餐": "comboBranch",
+            "查看当前套餐": "performCheck",
+            "退出": "exitBranch"
+        },
+        "silence_step": "welcome",
+        "default_step": "welcome",
+        "is_exit": false
+    },
+    "exitBranch": {
+        "name": "exitBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "再见！"
+            },
+            {
+                "type": "Exit"
+            }
+        ],
+        "branches": {},
+        "silence_step": null,
+        "default_step": null,
+        "is_exit": true
+    }
+}

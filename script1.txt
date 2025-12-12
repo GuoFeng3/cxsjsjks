@@ -1,0 +1,114 @@
+Step login
+    Speak "您好，请问您是？"
+    Listen
+    Action user_login "user_input"
+    Default welcome
+
+Step welcome
+    Speak "您好，$username，请问有什么可以为您服务的？"
+    Listen
+    Branch "充话费", billBranch
+    Branch "充流量", flowBranch
+    Branch "变更套餐", comboBranch
+    Branch "查看当前套餐", performCheck
+    Branch "退出", exitBranch
+    Silence welcome
+    Default welcome
+
+Step billBranch
+    Speak "请问您充值的金额为："
+    Listen
+    Branch "<=0" failBranch
+    Branch ">0"  billSuccessBranch
+    Silence billUnkownBranch
+    Default billUnkownBranch
+
+Step billSuccessBranch
+    Action charge_bill "user_input"
+    Speak "话费充值成功，请问还有什么可以为您服务的"
+    Listen
+    Branch "充话费", billBranch
+    Branch "充流量", flowBranch
+    Branch "变更套餐", comboBranch
+    Branch "查看当前套餐", performCheck
+    Branch "退出", exitBranch
+    Silence welcome
+    Default welcome
+
+Step billUnkownBranch
+    Speak "没有听清，请您重说一遍好吗"
+    Default billBranch
+
+Step failBranch
+    Speak "您输入的数值有误，请重新输入"
+    Default billBranch
+
+Step flowBranch
+    Speak "请问您充值的流量为(GB)："
+    Listen
+    Branch "<=0" failFlowBranch
+    Branch ">0" flowSuccessBranch
+    Silence flowUnknownBranch
+    Default flowUnknownBranch
+
+Step flowSuccessBranch
+    Action charge_data "user_input"
+    Speak "流量充值成功，请问还有什么可以为您服务的"
+    Listen
+    Branch "充话费", billBranch
+    Branch "充流量", flowBranch
+    Branch "变更套餐", comboBranch
+    Branch "查看当前套餐", performCheck
+    Branch "退出", exitBranch
+    Silence welcome
+    Default welcome
+
+Step flowUnknownBranch
+    Speak "没有听清，请您重说一遍好吗"
+    Default flowBranch
+
+Step failFlowBranch
+    Speak "您输入的数值有误，请重新输入"
+    Default flowBranch
+
+Step comboBranch
+    Speak "请选择变更的套餐：套餐1、套餐2、套餐3"
+    Listen
+    Branch "套餐1" comboSuccess
+    Branch "套餐2" comboSuccess
+    Branch "套餐3" comboSuccess
+    Silence comboUnknownBranch
+    Default comboUnknownBranch
+
+Step comboSuccess
+    Action change_combo "user_input"
+    Speak "套餐变更成功，请问还有什么可以为您服务的"
+    Listen
+    Branch "充话费", billBranch
+    Branch "充流量", flowBranch
+    Branch "变更套餐", comboBranch
+    Branch "查看当前套餐", performCheck
+    Branch "退出", exitBranch
+    Silence welcome
+    Default welcome
+
+Step comboUnknownBranch
+    Speak "没有听清，请您重说一遍好吗"
+    Default comboBranch
+
+Step performCheck
+    Action check_status
+    Speak "$check_result"
+    Speak "请问还有什么可以为您服务的"
+    Listen
+    Branch "充话费", billBranch
+    Branch "充流量", flowBranch
+    Branch "变更套餐", comboBranch
+    Branch "查看当前套餐", performCheck
+    Branch "退出", exitBranch
+    Silence welcome
+    Default welcome
+
+Step exitBranch
+    Speak "再见！"
+    Exit

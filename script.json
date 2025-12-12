@@ -1,0 +1,356 @@
+{
+    "welcome": {
+        "name": "welcome",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "您好，请问您需要点什么"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "100"
+                ]
+            }
+        ],
+        "branches": {
+            "食物": "foodBranch",
+            "饮品": "drinkBranch",
+            "套餐": "comboBranch",
+            "查看订单": "performCheck",
+            "退出": "exitBranch"
+        },
+        "silence_step": "welcome",
+        "default_step": "defaultBranch",
+        "is_exit": false
+    },
+    "foodBranch": {
+        "name": "foodBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "菜单如下：食物1；食物2；食物3"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "食物1": "placeFoodOrder",
+            "食物2": "placeFoodOrder",
+            "食物3": "placeFoodOrder",
+            "返回": "welcome"
+        },
+        "silence_step": "foodBranch",
+        "default_step": "defaultBranchFood",
+        "is_exit": false
+    },
+    "placeFoodOrder": {
+        "name": "placeFoodOrder",
+        "instructions": [
+            {
+                "type": "Action",
+                "name": "place_order",
+                "args": [
+                    "F"
+                ]
+            },
+            {
+                "type": "Speak",
+                "content": "您已下单，您的号码为：$last_order_id"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "返回": "welcome"
+        },
+        "silence_step": null,
+        "default_step": "defaultBranch",
+        "is_exit": false
+    },
+    "drinkBranch": {
+        "name": "drinkBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "菜单如下：饮品1；饮品2；饮品3"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "饮品1": "placeDrinkOrder",
+            "饮品2": "placeDrinkOrder",
+            "饮品3": "placeDrinkOrder",
+            "返回": "welcome"
+        },
+        "silence_step": "drinkBranch",
+        "default_step": "defaultBranchDrink",
+        "is_exit": false
+    },
+    "placeDrinkOrder": {
+        "name": "placeDrinkOrder",
+        "instructions": [
+            {
+                "type": "Action",
+                "name": "place_order",
+                "args": [
+                    "D"
+                ]
+            },
+            {
+                "type": "Speak",
+                "content": "您已下单，您的号码为：$last_order_id"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "返回": "welcome"
+        },
+        "silence_step": null,
+        "default_step": "defaultBranch",
+        "is_exit": false
+    },
+    "comboBranch": {
+        "name": "comboBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "套餐如下：套餐1；套餐2；套餐3"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "套餐1": "placeComboOrder",
+            "套餐2": "placeComboOrder",
+            "套餐3": "placeComboOrder",
+            "返回": "welcome"
+        },
+        "silence_step": "comboBranch",
+        "default_step": "defaultBranchCombo",
+        "is_exit": false
+    },
+    "placeComboOrder": {
+        "name": "placeComboOrder",
+        "instructions": [
+            {
+                "type": "Action",
+                "name": "place_order",
+                "args": [
+                    "C"
+                ]
+            },
+            {
+                "type": "Speak",
+                "content": "您已下单，您的号码为：$last_order_id"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "返回": "welcome"
+        },
+        "silence_step": "welcome",
+        "default_step": "welcome",
+        "is_exit": false
+    },
+    "checkOrderBranch": {
+        "name": "checkOrderBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "请输入订单号码"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "返回": "welcome"
+        },
+        "silence_step": "welcome",
+        "default_step": "defaultBranch",
+        "is_exit": false
+    },
+    "performCheck": {
+        "name": "performCheck",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "请输入订单号码"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            },
+            {
+                "type": "Action",
+                "name": "check_order_from_input",
+                "args": [
+                    "user_input"
+                ]
+            },
+            {
+                "type": "Speak",
+                "content": "$check_result"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "返回": "welcome"
+        },
+        "silence_step": null,
+        "default_step": "defaultBranch",
+        "is_exit": false
+    },
+    "defaultBranch": {
+        "name": "defaultBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "没有理解您的意思，请重说"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "食物": "foodBranch",
+            "饮品": "drinkBranch",
+            "套餐": "comboBranch",
+            "查看订单": "performCheck",
+            "退出": "exitBranch"
+        },
+        "silence_step": null,
+        "default_step": "defaultBranch",
+        "is_exit": false
+    },
+    "defaultBranchFood": {
+        "name": "defaultBranchFood",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "没有听清您说的是哪个食物，请重说"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20,"
+                ]
+            }
+        ],
+        "branches": {
+            "食物1": "placeFoodOrder",
+            "食物2": "placeFoodOrder",
+            "食物3": "placeFoodOrder",
+            "有什么": "foodBranch",
+            "返回": "welcome"
+        },
+        "silence_step": "foodBranch",
+        "default_step": "defaultBranchFood",
+        "is_exit": false
+    },
+    "defaultBranchDrink": {
+        "name": "defaultBranchDrink",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "没有听清您说的是哪个饮品，请重说"
+            },
+            {
+                "type": "Listen",
+                "params": []
+            }
+        ],
+        "branches": {
+            "饮品1": "placeDrinkOrder",
+            "饮品2": "placeDrinkOrder",
+            "饮品3": "placeDrinkOrder",
+            "有什么": "drinkBranch",
+            "返回": "welcome"
+        },
+        "silence_step": "drinkBranch",
+        "default_step": "defaultBranchDrink",
+        "is_exit": false
+    },
+    "defaultBranchCombo": {
+        "name": "defaultBranchCombo",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "没有听清您说的是哪个套餐，请重说"
+            },
+            {
+                "type": "Listen",
+                "params": [
+                    "20"
+                ]
+            }
+        ],
+        "branches": {
+            "套餐1": "placeComboOrder",
+            "套餐2": "placeComboOrder",
+            "套餐3": "placeComboOrder",
+            "有什么": "comboBranch",
+            "返回": "welcome"
+        },
+        "silence_step": "comboBranch",
+        "default_step": "defaultBranchCombo",
+        "is_exit": false
+    },
+    "exitBranch": {
+        "name": "exitBranch",
+        "instructions": [
+            {
+                "type": "Speak",
+                "content": "再见"
+            },
+            {
+                "type": "Exit"
+            }
+        ],
+        "branches": {},
+        "silence_step": null,
+        "default_step": null,
+        "is_exit": true
+    }
+}
