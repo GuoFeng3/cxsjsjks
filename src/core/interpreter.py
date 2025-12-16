@@ -144,7 +144,7 @@ class Interpreter:
         for cand in candidates:
             if cand in user_input:
                 return cand
-                
+
         # 4. LLM Match
         if not candidates:
             return "None"  
