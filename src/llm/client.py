@@ -13,7 +13,6 @@ class LLMClient:
             user_input=user_input, 
             candidates=json.dumps(candidates, ensure_ascii=False)
         )
-        
         payload = {
             "model": "deepseek-chat",
             "messages": [
@@ -22,7 +21,6 @@ class LLMClient:
             ],
             "stream": False
         }
-        
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.api_key}"
@@ -35,9 +33,9 @@ class LLMClient:
                 headers=headers,
                 method="POST"
             )
-            
             with urllib.request.urlopen(req) as response:
                 result = json.loads(response.read().decode('utf-8'))
+
                 content = result['choices'][0]['message']['content'].strip()
                 # Simple validation: ensure the returned content is one of the candidates
                 # or contains it (heuristic from original code)
@@ -46,5 +44,4 @@ class LLMClient:
                         return cand
                 return "None"
         except Exception as e:
-            # print(f"LLM Error: {e}") 
             return "None"

@@ -109,6 +109,8 @@ class Interpreter:
             print(f"Error: Action '{action_name}' not found.")
     
     def analyze_intent(self, user_input: str, candidates: List[str]) -> str:
+        
+
         if not user_input: return "None"
         
         # 1. Exact match
@@ -145,6 +147,5 @@ class Interpreter:
                 
         # 4. LLM Match
         if not candidates:
-            return "None"
-            
+            return "None"  
         return self.llm_client.classify_intent(user_input, candidates, INTENT_CLASSIFICATION_PROMPT)

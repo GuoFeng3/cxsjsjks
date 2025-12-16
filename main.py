@@ -9,6 +9,7 @@ from src.core.compiler import Compiler
 
 def main():
     if len(sys.argv) < 2:
+        
         print("Usage:")
         print("  python main.py run <script_json>")
         print("  python main.py compile <script_txt> <output_json>")

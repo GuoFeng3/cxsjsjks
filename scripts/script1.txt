@@ -5,7 +5,7 @@ Step login
     Default welcome
 
 Step welcome
-    Speak "您好，$username，请问有什么可以为您服务的？"
+    Speak "您好，$username，请问有什么可以为您服务的？您需要充话费，充流量，还是变更套餐？"
     Listen
     Branch "充话费", billBranch
     Branch "充流量", flowBranch
