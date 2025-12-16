@@ -95,7 +95,7 @@ def user_login(context: Dict[str, Any], args: List[str]):
         users[username] = {"balance": 0.0, "data": 0.0, "combo": ""}
         save_users()
     
-    print(f"System: 用户 {username} 登录成功。")
+    print(f"好的，我知道了")
 
 def charge_bill(context: Dict[str, Any], args: List[str]):
     """
@@ -119,7 +119,7 @@ def charge_bill(context: Dict[str, Any], args: List[str]):
         amount = float(amount_str)
         users[username]["balance"] += amount
         save_users()
-        print(f"System: User {username} charged {amount}. New balance: {users[username]['balance']}")
+        print(f"Robot: 用户 {username} 充值了 {amount}. 新的余额为: {users[username]['balance']}")
     except ValueError:
         print(f"Error: Invalid amount '{amount_str}'")
 
@@ -145,7 +145,7 @@ def charge_data(context: Dict[str, Any], args: List[str]):
         amount = float(amount_str)
         users[username]["data"] += amount
         save_users()
-        print(f"System: User {username} charged {amount}GB data. New data: {users[username]['data']}")
+        print(f"Robot: 用户 {username} 充值了 {amount}GB 数据. 新的流量为: {users[username]['data']}GB")
     except ValueError:
         print(f"Error: Invalid data amount '{amount_str}'")
 
@@ -168,7 +168,7 @@ def change_combo(context: Dict[str, Any], args: List[str]):
     if combo:
         users[username]["combo"] = combo
         save_users()
-        print(f"System: User {username} changed combo to {combo}")
+        print(f"Robot: 用户 {username} 更改为套餐 {combo}")
     else:
         print("Error: Could not determine new combo.")
 

@@ -28,7 +28,7 @@
         "instructions": [
             {
                 "type": "Speak",
-                "content": "您好，$username，请问有什么可以为您服务的？"
+                "content": "您好，$username，请问有什么可以为您服务的？您需要充话费，充流量，还是变更套餐？"
             },
             {
                 "type": "Listen",
@@ -40,7 +40,8 @@
             "充流量": "flowBranch",
             "变更套餐": "comboBranch",
             "查看当前套餐": "performCheck",
-            "退出": "exitBranch"
+            "退出": "exitBranch",
+            "没了": "exitBranch"
         },
         "silence_step": "welcome",
         "default_step": "welcome",
@@ -90,7 +91,8 @@
             "充流量": "flowBranch",
             "变更套餐": "comboBranch",
             "查看当前套餐": "performCheck",
-            "退出": "exitBranch"
+            "退出": "exitBranch",
+            "没了": "exitBranch"
         },
         "silence_step": "welcome",
         "default_step": "welcome",
@@ -166,7 +168,8 @@
             "充流量": "flowBranch",
             "变更套餐": "comboBranch",
             "查看当前套餐": "performCheck",
-            "退出": "exitBranch"
+            "退出": "exitBranch",
+            "没了": "exitBranch"
         },
         "silence_step": "welcome",
         "default_step": "welcome",
@@ -243,7 +246,8 @@
             "充流量": "flowBranch",
             "变更套餐": "comboBranch",
             "查看当前套餐": "performCheck",
-            "退出": "exitBranch"
+            "退出": "exitBranch",
+            "没了": "exitBranch"
         },
         "silence_step": "welcome",
         "default_step": "welcome",
@@ -288,7 +292,8 @@
             "充流量": "flowBranch",
             "变更套餐": "comboBranch",
             "查看当前套餐": "performCheck",
-            "退出": "exitBranch"
+            "退出": "exitBranch",
+            "没了": "exitBranch"
         },
         "silence_step": "welcome",
         "default_step": "welcome",

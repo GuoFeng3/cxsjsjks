@@ -12,6 +12,7 @@ Step welcome
     Branch "变更套餐", comboBranch
     Branch "查看当前套餐", performCheck
     Branch "退出", exitBranch
+    Branch "没了", exitBranch
     Silence welcome
     Default welcome
 
@@ -32,6 +33,7 @@ Step billSuccessBranch
     Branch "变更套餐", comboBranch
     Branch "查看当前套餐", performCheck
     Branch "退出", exitBranch
+    Branch "没了", exitBranch
     Silence welcome
     Default welcome
 
@@ -60,6 +62,7 @@ Step flowSuccessBranch
     Branch "变更套餐", comboBranch
     Branch "查看当前套餐", performCheck
     Branch "退出", exitBranch
+    Branch "没了", exitBranch
     Silence welcome
     Default welcome
 
@@ -89,6 +92,7 @@ Step comboSuccess
     Branch "变更套餐", comboBranch
     Branch "查看当前套餐", performCheck
     Branch "退出", exitBranch
+    Branch "没了", exitBranch
     Silence welcome
     Default welcome
 
@@ -106,6 +110,7 @@ Step performCheck
     Branch "变更套餐", comboBranch
     Branch "查看当前套餐", performCheck
     Branch "退出", exitBranch
+    Branch "没了", exitBranch
     Silence welcome
     Default welcome
 

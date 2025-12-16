@@ -10,7 +10,7 @@
         "combo": ""
     },
     "Bob": {
-        "balance": 1000.0,
+        "balance": 2311.0,
         "data": 0.0,
         "combo": ""
     }

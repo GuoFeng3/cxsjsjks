@@ -23,9 +23,10 @@ Step foodBranch
 
 Step placeFoodOrder
     Action place_order "F"
-    Speak "您已下单，您的号码为：$last_order_id"
+    Speak "您已下单，您的号码为：$last_order_id，请问您还需要什么吗"
     Listen 20
     Branch "返回", welcome
+    Branch "不需要", welcome
     Default defaultBranch
 
 # Drink Branch
@@ -41,9 +42,10 @@ Step drinkBranch
 
 Step placeDrinkOrder
     Action place_order "D"
-    Speak "您已下单，您的号码为：$last_order_id"
+    Speak "您已下单，您的号码为：$last_order_id，请问您还需要什么吗"
     Listen 20
     Branch "返回", welcome
+    Branch "不需要", welcome
     Default defaultBranch
 
 # Combo Branch
@@ -59,9 +61,10 @@ Step comboBranch
 
 Step placeComboOrder
     Action place_order "C"
-    Speak "您已下单，您的号码为：$last_order_id"
+    Speak "您已下单，您的号码为：$last_order_id，请问您还需要什么吗"
     Listen 20
     Branch "返回", welcome
+    Branch "不需要", welcome
     Silence welcome
     Default welcome
 
