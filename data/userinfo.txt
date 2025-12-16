@@ -8,5 +8,10 @@
         "balance": 100.0,
         "data": 0.0,
         "combo": ""
+    },
+    "Bob": {
+        "balance": 0.0,
+        "data": 0.0,
+        "combo": ""
     }
 }
