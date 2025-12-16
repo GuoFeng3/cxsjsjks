@@ -13,5 +13,10 @@
         "balance": 2311.0,
         "data": 0.0,
         "combo": ""
+    },
+    "50": {
+        "balance": 0.0,
+        "data": 0.0,
+        "combo": ""
     }
 }

@@ -118,7 +118,7 @@ class Interpreter:
             return user_input
             
         # 2. Numerical comparison
-        if user_input.replace('.', '', 1).isdigit():
+        if user_input.replace('.', '', 1).isdigit() or user_input.startswith('-'):
             try:
                 val = float(user_input)
                 for cand in candidates:
